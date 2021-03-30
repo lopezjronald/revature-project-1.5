@@ -1,12 +1,12 @@
-package com.project1.service;
+package CeglarekLopez.service;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project1.dao.ReimbursementDao;
-import com.project1.model.Reimbursement;
+import CeglarekLopez.dao.ReimbursementDao;
+import CeglarekLopez.model.Reimbursement;
 
 public class ReimbursementService {
 	private ReimbursementDao rd;

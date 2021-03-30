@@ -1,4 +1,4 @@
-package com.project1.dao;
+package CeglarekLopez.dao;
 
 import java.util.List;
 
