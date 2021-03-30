@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReimbursementDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">0.0.1</a> &gt; <a href="index.source.html" class="el_package">CeglarekLopez.dao</a> &gt; <span class="el_source">ReimbursementDao.java</span></div><h1>ReimbursementDao.java</h1><pre class="source lang-java linenums">package CeglarekLopez.dao;
+
+import java.sql.Array;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import CeglarekLopez.model.Reimbursement;
+
+/*
+ * Purpose of this Dao is to send/retrieve info about a reimbursement
+ * to/from the database. It then returns the composed Reimbursement Object.
+ */
+<span class="nc" id="L24">public class ReimbursementDao implements GenericDao&lt;Reimbursement&gt; {</span>
+<span class="nc" id="L25">	private static final Logger LOGGER = Logger.getLogger(ReimbursementDao.class);</span>
+	
+	private Reimbursement objectConstructor(ResultSet rs) throws SQLException {
+<span class="nc" id="L28">		return new Reimbursement(rs.getInt(1), rs.getFloat(2), rs.getTimestamp(3), rs.getTimestamp(4),</span>
+<span class="nc" id="L29">							rs.getString(5), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));</span>
+	}
+
+	@Override
+	public List&lt;Reimbursement&gt; getList() {
+//		List&lt;Reimbursement&gt; l = new ArrayList&lt;Reimbursement&gt;();
+//
+//		try (Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String qSql = &quot;SELECT * FROM ers_reimbursement&quot;;
+//			Statement s = c.createStatement();
+//			ResultSet rs = s.executeQuery(qSql);
+//
+//			while(rs.next()) {
+//				l.add(objectConstructor(rs));
+//			}
+//
+//			rs.close();
+//			s.closeOnCompletion();
+//			LOGGER.debug(&quot;All reimbursements were retrieved from the database.&quot;);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			LOGGER.error(&quot;An attempt to get all reimbursements failed.&quot;);
+//		}
+<span class="nc" id="L52">		return null;</span>
+	}
+
+	@Override
+	public Reimbursement getById(int id) {
+<span class="nc" id="L57">		Reimbursement r = null;</span>
+//
+//		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String qSql = &quot;SELECT * FROM ers_reimbursement WHERE reimb_id = ?&quot;;
+//			PreparedStatement ps = c.prepareStatement(qSql);
+//			ps.setInt(1, id);
+//			ResultSet rs = ps.executeQuery();
+//
+//			if(rs.next())
+//				r = objectConstructor(rs);
+//
+//			rs.close();
+//			ps.closeOnCompletion();
+//			LOGGER.debug(&quot;A reimbursement by ID &quot; + id + &quot; was retrieved from the database.&quot;);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			LOGGER.error(&quot;An attempt to get a reimbursement by ID&quot; + id + &quot; from the database failed.&quot;);
+//		}
+<span class="nc" id="L75">		return r;</span>
+	}
+	
+	@Override
+	public List&lt;Reimbursement&gt; getByUserId(int id) {
+<span class="nc" id="L80">		List&lt;Reimbursement&gt; l = new ArrayList&lt;Reimbursement&gt;();</span>
+		
+//		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String qSql = &quot;SELECT * FROM ers_reimbursement WHERE reimb_author = ?&quot;;
+//			PreparedStatement ps = c.prepareStatement(qSql);
+//			ps.setInt(1, id);
+//			ResultSet rs = ps.executeQuery();
+//
+//			while(rs.next()) {
+//				l.add(objectConstructor(rs));
+//			}
+//			rs.close();
+//			ps.closeOnCompletion();
+//			LOGGER.debug(&quot;A list of reimbursements made by user ID &quot; + id + &quot; was retrieved from the database.&quot;);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			LOGGER.error(&quot;An attempt to get all reimbursements made by user ID &quot; + id + &quot; fron the database failed.&quot;);
+//		}
+//		System.out.println(l.toString());
+<span class="nc" id="L99">		return l;</span>
+	}
+	
+	public Reimbursement getByUsername(String username) {
+		//Empty. Reason - No use.
+<span class="nc" id="L104">		return null;</span>
+	}
+
+	@Override
+	public void insert(Reimbursement r) {
+//		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String sql = &quot;INSERT INTO ers_reimbursement(reimb_amount, reimb_submitted, reimb_description, &quot;
+//					   + &quot;reimb_author, reimb_status_id, reimb_type_id) VALUES(?, ?, ?, ?, ?, ?)&quot;;
+//			PreparedStatement ps = c.prepareStatement(sql);
+//			ps.setFloat(1, r.getAmount());
+//			Calendar cal = Calendar.getInstance();
+//			ps.setTimestamp(2, new Timestamp(cal.getTime().getTime()));
+//			ps.setString(3, r.getDescription());
+//			ps.setInt(4, r.getAuthor());
+//			ps.setInt(5, r.getStatus_id());
+//			ps.setInt(6, r.getType_id());
+//
+//			ps.executeUpdate();
+//			ps.closeOnCompletion();
+//			LOGGER.debug(&quot;A new reimbursement was successfully added to the database.&quot;);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			LOGGER.error(&quot;An attempt to insert a reimbursement to the database failed.&quot;);
+//		}
+<span class="nc" id="L128">	}</span>
+	
+	public void updateList(int[][] i, int resolver) {
+//		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String aSql = &quot;SELECT acceptarray(?, ?)&quot;;
+//			String dSql = &quot;SELECT denyarray(?, ?)&quot;;
+//
+//			//Convert both of our int arrays to an Integer object
+//			Integer[] a = Arrays.stream(i[0]).boxed().toArray(Integer[]::new);
+//			Integer[] d = Arrays.stream(i[1]).boxed().toArray(Integer[]::new);
+//
+//			//Convert both of our Integer arrays into something useful for SQL.
+//			Array aArray = c.createArrayOf(&quot;INTEGER&quot;, a);
+//			Array dArray = c.createArrayOf(&quot;INTEGER&quot;, d);
+//
+//			//Perform our SQL calls
+//			CallableStatement cs = c.prepareCall(aSql);
+//			cs.setArray(1, aArray);
+//			cs.setInt(2, resolver);
+//			cs.execute();
+//			cs.closeOnCompletion();
+//
+//			cs = c.prepareCall(dSql);
+//			cs.setArray(1, dArray);
+//			cs.setInt(2, resolver);
+//			cs.execute();
+//			cs.closeOnCompletion();
+//
+//			//This section is just for the sake of logging.
+//			int totalCount = 0;
+//			for(int co = 0; co &lt; a.length; co++) {
+//				if (a[co] != -1) {
+//					totalCount++;
+//				}
+//				if (d[co] != -1) {
+//					totalCount++;
+//				}
+//			}
+//			LOGGER.debug(totalCount + &quot; reimbursement&quot; + ((totalCount != 1) ? &quot;s&quot; : &quot;&quot;) + &quot; modified by user ID &quot; + resolver + &quot;.&quot;);
+//		} catch (SQLException e) {
+//			LOGGER.error(&quot;An attempt to accept/deny reimbursements by user ID &quot; + resolver + &quot; from the database failed.&quot;);
+//			e.printStackTrace();
+//		}
+<span class="nc" id="L171">	}</span>
+	
+	@Override
+	public void delete(Reimbursement r) {
+		
+<span class="nc" id="L176">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

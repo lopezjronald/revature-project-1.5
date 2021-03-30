@@ -11,40 +11,40 @@ import CeglarekLopez.dao.UserDao;
 import CeglarekLopez.model.User;
 
 public class UserService {
-	private UserDao ud;
+	private UserDao userDao;
 	private static final Logger LOGGER = Logger.getLogger(UserService.class);
 	
 	public UserService() {
-		ud = new UserDao();
+		userDao = new UserDao();
 	}
 	
 	public List<User> fetchAllUsers() {
-		return ud.getList();
+		return userDao.getList();
 	}
 	
 	public User getUserById(int id) {
-		return ud.getById(id);
+		return userDao.getById(id);
 	}
 	
 	public User getUserByUsername(String username) {
-		User u = ud.getByUsername(username);
-		if (u != null) {
-			u.setPassword(""); //Remove the hashed password for security reasons.
+		User user = userDao.getByUsername(username);
+		if (user != null) {
+			user.setPassword(""); //Remove the hashed password for security reasons.
 			LOGGER.trace("Password info removed from username " + username + ".");
-			return u;
+			return user;
 		}
 		return null;
 	}
 
-	public void newUser(User u) {
-		ud.insert(u);
+	public void newUser(User user) {
+		userDao.insert(user);
 	}
 	
-	public User getUserByLogin(String user, String pass) {
-		User u = ud.getByUsername(user);
+	public User getUserByLogin(String user, String password) {
+		User u = this.userDao.getByUsername(user);
 		
 		if(u != null) {
-		String full = user + pass + "salt";
+		String full = user + password + "salt";
 			try {
 				//Let MessageDigest know that we want to hash using MD5
 				MessageDigest m = MessageDigest.getInstance("md5");

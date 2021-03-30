@@ -1,5 +1,6 @@
 package CeglarekLopez.util;
 
+import CeglarekLopez.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -10,7 +11,8 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory() {
         try {
-            return new Configuration().configure(new File("hibernate.cfg.xml")).buildSessionFactory();
+            return new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(User.class).buildSessionFactory();
+
         } catch (Throwable ex) {
             System.err.println("Initial Session Factory creation failed " + ex);
             throw new ExceptionInInitializerError();
@@ -20,7 +22,7 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    public static void shutdown() {
+    public static void close() {
         // Close caches and connection pools
         getSessionFactory().close();
     }
