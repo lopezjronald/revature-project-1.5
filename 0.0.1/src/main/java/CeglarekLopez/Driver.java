@@ -1,28 +1,34 @@
 package CeglarekLopez;
 
+import CeglarekLopez.dao.UserDao;
 import CeglarekLopez.model.User;
 import CeglarekLopez.service.UserService;
+import CeglarekLopez.util.HibernateUtil;
+
+import java.sql.Connection;
 
 public class Driver {
 
     public static void main(String[] args) {
 
-        UserService userService = new UserService();
+        UserDao userDao = new UserDao();
 
-        User user = new User();
+        int number = 2;
+        String username = "username" + number;
+        String password = "password" + number;
+        String firstName = "firstName" + number;
+        String lastName = "lastName" + number;
+        String email = "email" + number;
+        int roleId = 1;
 
-//        user.setFirstname("Steven");
-//        user.setLastname("Ceglarek");
-//        user.setPassword("12345678");
-//        user.setEmail("sc@gmail.com");
-//        user.setUsername("Ceglareks954");
-//        user.setRole_id(1);
-//
-//        userService.user(user);
-//
-//        System.out.println(user);
 
-        User newUser = userService.getUserById(10);
+        User user = new User(username, password, firstName, lastName, email, 1);
+
+        System.out.println(user.toString());
+
+        userDao.insert(user);
+
+        User newUser = userDao.getById(1);
 
         System.out.println(newUser);
 

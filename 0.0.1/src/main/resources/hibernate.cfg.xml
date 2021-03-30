@@ -7,7 +7,7 @@
 
         <!-- JDBC Database Connection Settings -->
         <property name = "hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name = "hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres?useSSL=false</property>
+        <property name = "hibernate.connection.url">jdbc:postgresql://CeglarekLopezProject.cnftml2dw6bt.us-east-2.rds.amazonaws.com:5432/CeglarekLopezProject?currentSchema=public</property>
         <property name = "hibernate.connection.username">postgres</property>
         <property name = "hibernate.connection.password">password</property>
 
