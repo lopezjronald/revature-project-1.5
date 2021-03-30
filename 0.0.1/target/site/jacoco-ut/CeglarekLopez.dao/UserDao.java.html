@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserDao.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">0.0.1</a> &gt; <a href="index.source.html" class="el_package">CeglarekLopez.dao</a> &gt; <span class="el_source">UserDao.java</span></div><h1>UserDao.java</h1><pre class="source lang-java linenums">package CeglarekLopez.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import CeglarekLopez.util.HibernateUtil;
+import org.apache.log4j.Logger;
+
+import CeglarekLopez.model.User;
+import org.hibernate.Session;
+
+/*
+ * Purpose of this Dao is to send/retrieve info about a reimbursement
+ * to/from the database. It then returns the composed Reimbursement Object.
+ */
+<span class="nc" id="L21">public class UserDao implements GenericDao &lt;User&gt; {</span>
+<span class="nc" id="L22">	private static final Logger LOGGER = Logger.getLogger(UserDao.class);</span>
+
+	private User objectConstructor(ResultSet rs) throws SQLException {
+<span class="nc" id="L25">		return new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),</span>
+<span class="nc" id="L26">						rs.getString(6), rs.getInt(7));</span>
+	}
+	
+	@Override
+	public List&lt;User&gt; getList() {
+//		List&lt;User&gt; l = new ArrayList&lt;User&gt;();
+//
+//		try (Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String qSql = &quot;SELECT * FROM ers_users&quot;;
+//			Statement s = c.createStatement();
+//			ResultSet rs = s.executeQuery(qSql);
+//
+//			while(rs.next()) {
+//				l.add(objectConstructor(rs));
+//			}
+//			LOGGER.debug(&quot;A list of users was retrieved from the database.&quot;);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			LOGGER.error(&quot;An attempt to get all users from the database failed.&quot;);
+//		}
+<span class="nc" id="L46">		return null;</span>
+	}
+
+	@Override
+	public User getById(int id) {
+<span class="nc" id="L51">		Session session = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L52">		session.beginTransaction();</span>
+<span class="nc" id="L53">		User user = (User) session.get(User.class, id);</span>
+<span class="nc" id="L54">		session.getTransaction().commit();</span>
+<span class="nc" id="L55">		session.close();</span>
+<span class="nc" id="L56">		return user;</span>
+
+	}
+	
+	@Override
+	public List&lt;User&gt; getByUserId(int id) {
+		// TODO Auto-generated method stub
+<span class="nc" id="L63">		return null;</span>
+	}
+	
+	@Override
+	public User getByUsername(String username) {
+//		User u = null;
+//
+//		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
+//			String qSql = &quot;SELECT * FROM ers_users WHERE ers_username = ?&quot;;
+//			PreparedStatement ps = c.prepareStatement(qSql);
+//			ps.setString(1, username.toLowerCase());
+//			ResultSet rs = ps.executeQuery();
+//
+//			if(rs.next()) {
+//				//System.out.println(&quot;User object was created!&quot;);
+//				u = objectConstructor(rs);
+//			}
+//
+//			LOGGER.debug(&quot;Information about username &quot; + username + &quot; was retrieved from the database.&quot;);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			LOGGER.error(&quot;An attempt to get info about username &quot; + username + &quot; from the database failed.&quot;);
+//		}
+<span class="nc" id="L86">		return null;</span>
+	}
+
+	@Override
+	public void insert(User t) {
+<span class="nc" id="L91">		Session session = HibernateUtil.getSessionFactory().openSession();</span>
+<span class="nc" id="L92">		session.beginTransaction();</span>
+<span class="nc" id="L93">		session.save(t);</span>
+<span class="nc" id="L94">		session.getTransaction().commit();</span>
+<span class="nc" id="L95">		session.close();</span>
+		
+<span class="nc" id="L97">	}</span>
+
+	@Override
+	public void delete(User t) {
+		// TODO Auto-generated method stub
+		
+<span class="nc" id="L103">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

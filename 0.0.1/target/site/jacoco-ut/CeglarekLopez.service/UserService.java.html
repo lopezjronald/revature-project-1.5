@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">0.0.1</a> &gt; <a href="index.source.html" class="el_package">CeglarekLopez.service</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package CeglarekLopez.service;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import CeglarekLopez.dao.UserDao;
+import CeglarekLopez.model.User;
+
+public class UserService {
+	private UserDao ud;
+<span class="nc" id="L15">	private static final Logger LOGGER = Logger.getLogger(UserService.class);</span>
+	
+<span class="nc" id="L17">	public UserService() {</span>
+<span class="nc" id="L18">		ud = new UserDao();</span>
+<span class="nc" id="L19">	}</span>
+	
+	public List&lt;User&gt; fetchAllUsers() {
+<span class="nc" id="L22">		return ud.getList();</span>
+	}
+	
+	public User getUserById(int id) {
+<span class="nc" id="L26">		return ud.getById(id);</span>
+	}
+	
+	public User getUserByUsername(String username) {
+<span class="nc" id="L30">		User u = ud.getByUsername(username);</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">		if (u != null) {</span>
+<span class="nc" id="L32">			u.setPassword(&quot;&quot;); //Remove the hashed password for security reasons.</span>
+<span class="nc" id="L33">			LOGGER.trace(&quot;Password info removed from username &quot; + username + &quot;.&quot;);</span>
+<span class="nc" id="L34">			return u;</span>
+		}
+<span class="nc" id="L36">		return null;</span>
+	}
+
+	public void newUser(User u) {
+<span class="nc" id="L40">		ud.insert(u);</span>
+<span class="nc" id="L41">	}</span>
+	
+	public User getUserByLogin(String user, String pass) {
+<span class="nc" id="L44">		User u = ud.getByUsername(user);</span>
+		
+<span class="nc bnc" id="L46" title="All 2 branches missed.">		if(u != null) {</span>
+<span class="nc" id="L47">		String full = user + pass + &quot;salt&quot;;</span>
+			try {
+				//Let MessageDigest know that we want to hash using MD5
+<span class="nc" id="L50">				MessageDigest m = MessageDigest.getInstance(&quot;md5&quot;);</span>
+				//Convert our full string to a byte array.
+<span class="nc" id="L52">				byte[] messageDigest = m.digest(full.getBytes());</span>
+				//Convert our byte array into a signum representation of its former self.
+<span class="nc" id="L54">				BigInteger n = new BigInteger(1, messageDigest);</span>
+				
+				//Convert the whole array into a hexadecimal string.
+<span class="nc" id="L57">				String hash = n.toString(16);</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">				while(hash.length() &lt; 32) {</span>
+<span class="nc" id="L59">					hash = &quot;0&quot; + hash;</span>
+				}
+				
+<span class="nc bnc" id="L62" title="All 2 branches missed.">				if(u.getPassword().equals(hash)) {</span>
+					//System.out.println(&quot;Hash matched!&quot;);
+<span class="nc" id="L64">					return u;</span>
+				}
+<span class="nc" id="L66">			} catch (NoSuchAlgorithmException e) {</span>
+<span class="nc" id="L67">				e.printStackTrace();</span>
+<span class="nc" id="L68">			}</span>
+		}
+		
+<span class="nc" id="L71">		return null;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
