@@ -7,24 +7,24 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        UserService us = new UserService();
+        UserService userService = new UserService();
 
-//        User newUser = new User();
-//
-//        newUser.setFirstname("Steven");
-//        newUser.setLastname("Ceglarek");
-//        newUser.setPassword("12345678");
-//        newUser.setEmail("sc@gmail.com");
-//        newUser.setUsername("Ceglareks954");
-//        newUser.setRole_id(1);
-//
-//        us.newUser(newUser);
-//
-//        System.out.println(newUser);
+        User user = new User();
 
-        User steven = us.getUserById(1);
+//        user.setFirstname("Steven");
+//        user.setLastname("Ceglarek");
+//        user.setPassword("12345678");
+//        user.setEmail("sc@gmail.com");
+//        user.setUsername("Ceglareks954");
+//        user.setRole_id(1);
+//
+//        userService.user(user);
+//
+//        System.out.println(user);
 
-        System.out.println(steven);
+        User newUser = userService.getUserById(10);
+
+        System.out.println(newUser);
 
     }
 }

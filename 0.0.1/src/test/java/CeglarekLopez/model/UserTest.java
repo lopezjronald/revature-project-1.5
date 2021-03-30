@@ -16,7 +16,7 @@ class UserTest {
 
     @Test
     void getUser_id() {
-        assertEquals(1, newUser.getUser_id());
+        assertEquals(1, newUser.getId());
     }
 
     @Test
@@ -31,12 +31,12 @@ class UserTest {
 
     @Test
     void getFirstname() {
-        assertEquals("first", newUser.getFirstname());
+        assertEquals("first", newUser.getFirstName());
     }
 
     @Test
     void getLastname() {
-        assertEquals("last", newUser.getLastname());
+        assertEquals("last", newUser.getLastName());
     }
 
     @Test
@@ -46,7 +46,7 @@ class UserTest {
 
     @Test
     void getRole_id() {
-        assertEquals(1, newUser.getRole_id());
+        assertEquals(1, newUser.getRoleId());
     }
 
     @Test

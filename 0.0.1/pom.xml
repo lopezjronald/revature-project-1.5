@@ -29,10 +29,11 @@
         <mockito.version>3.8.0</mockito.version>
         <jackson-databind.version>2.12.1</jackson-databind.version>
         <maven-surefire-report-plugin.version>3.0.0-M5</maven-surefire-report-plugin.version>
-        <hibernate-core.version>5.4.27.Final</hibernate-core.version>
+        <hibernate-core.version>5.4.30.Final</hibernate-core.version>
         <slf4j.version>1.7.30</slf4j.version>
         <hibernate-hikaricp.version>5.2.6.Final</hibernate-hikaricp.version>
         <javax-persistence-api.version>2.2</javax-persistence-api.version>
+        <postgresql-jdbc.version>9.1-901-1.jdbc4</postgresql-jdbc.version>
     </properties>
 
     <dependencies>
@@ -41,6 +42,14 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql-jdbc.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>log4j</groupId>

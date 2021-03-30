@@ -28,7 +28,7 @@ public class Reimbursement {
 	private String description;
 	private int author;
 	private int resolver;
-	private int status_id;
-	private int type_id;
+	private int statusId;
+	private int typeId;
 
 }
