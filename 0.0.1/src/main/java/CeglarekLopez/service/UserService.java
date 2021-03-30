@@ -1,4 +1,4 @@
-package com.project1.service;
+package CeglarekLopez.service;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.project1.dao.UserDao;
-import com.project1.model.User;
+import CeglarekLopez.dao.UserDao;
+import CeglarekLopez.model.User;
 
 public class UserService {
 	private UserDao ud;
@@ -34,6 +34,10 @@ public class UserService {
 			return u;
 		}
 		return null;
+	}
+
+	public void newUser(User u) {
+		ud.insert(u);
 	}
 	
 	public User getUserByLogin(String user, String pass) {

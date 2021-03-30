@@ -1,8 +1,17 @@
-package com.project1.model;
+package CeglarekLopez.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "reimbursements")
 public class Reimbursement {
+
+	@Id
+	@GeneratedValue
 	private int id;
 	private float amount;
 	private Timestamp submitted;
