@@ -37,6 +37,14 @@
     </properties>
 
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.5</version>
+        </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -97,6 +105,11 @@
             <version>${javax-servlet.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.3</version>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -155,17 +168,17 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>0.0.1</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            <addClasspath>true</addClasspath>-->
+<!--                            <mainClass>0.0.1</mainClass>-->
+<!--                        </manifest>-->
+<!--                    </archive>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -292,6 +305,17 @@
                 <version>${packagecloud.version}</version>
             </extension>
         </extensions>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.3.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
     </build>
 
     <distributionManagement>
