@@ -1,5 +1,6 @@
 package CeglarekLopez.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,18 +18,19 @@ import java.sql.Timestamp;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Reimbursement {
 
-	@Id
-	@GeneratedValue
-	private int id;
-	private float amount;
-	private Timestamp submitted;
-	private Timestamp resolved;
-	private String description;
-	private int author;
-	private int resolver;
-	private int statusId;
-	private int typeId;
+    @Id
+    @GeneratedValue
+    private int id;
+    private float amount;
+    private Timestamp submitted;
+    private Timestamp resolved;
+    private String description;
+    private int author;
+    private int resolver;
+    private int statusId;
+    private int typeId;
 
 }

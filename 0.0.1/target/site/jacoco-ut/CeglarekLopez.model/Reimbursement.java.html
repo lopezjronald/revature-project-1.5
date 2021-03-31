@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reimbursement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">0.0.1</a> &gt; <a href="index.source.html" class="el_package">CeglarekLopez.model</a> &gt; <span class="el_source">Reimbursement.java</span></div><h1>Reimbursement.java</h1><pre class="source lang-java linenums">package CeglarekLopez.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,169 +14,24 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = &quot;reimbursements&quot;)
+<span class="nc bnc" id="L17" title="All 42 branches missed.">@Data</span>
+<span class="nc" id="L18">@Builder</span>
+<span class="nc" id="L19">@NoArgsConstructor</span>
+<span class="nc" id="L20">@AllArgsConstructor</span>
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Reimbursement {
 
-	@Id
-	@GeneratedValue
-	private int id;
-	private float amount;
-	private Timestamp submitted;
-	private Timestamp resolved;
-	private String description;
-	private int author;
-	private int resolver;
-	private int status_id;
-	private int type_id;
-	
-<span class="nc" id="L25">	public Reimbursement() {</span>
-		//No-arg constructor
-<span class="nc" id="L27">	}</span>
-	
-	public Reimbursement(int id, float amount, Timestamp submitted, Timestamp resolved, String description, int author,
-<span class="nc" id="L30">			int resolver, int status_id, int type_id) {</span>
-<span class="nc" id="L31">		this.id = id;</span>
-<span class="nc" id="L32">		this.amount = amount;</span>
-<span class="nc" id="L33">		this.submitted = submitted;</span>
-<span class="nc" id="L34">		this.resolved = resolved;</span>
-<span class="nc" id="L35">		this.description = description;</span>
-<span class="nc" id="L36">		this.author = author;</span>
-<span class="nc" id="L37">		this.resolver = resolver;</span>
-<span class="nc" id="L38">		this.status_id = status_id;</span>
-<span class="nc" id="L39">		this.type_id = type_id;</span>
-<span class="nc" id="L40">	}</span>
+    @Id
+    @GeneratedValue
+<span class="nc" id="L26">    private int id;</span>
+<span class="nc" id="L27">    private float amount;</span>
+<span class="nc" id="L28">    private Timestamp submitted;</span>
+<span class="nc" id="L29">    private Timestamp resolved;</span>
+<span class="nc" id="L30">    private String description;</span>
+<span class="nc" id="L31">    private int author;</span>
+<span class="nc" id="L32">    private int resolver;</span>
+<span class="nc" id="L33">    private int statusId;</span>
+<span class="nc" id="L34">    private int typeId;</span>
 
-	public int getId() {
-<span class="nc" id="L43">		return id;</span>
-	}
-
-	public void setId(int id) {
-<span class="nc" id="L47">		this.id = id;</span>
-<span class="nc" id="L48">	}</span>
-
-	public float getAmount() {
-<span class="nc" id="L51">		return amount;</span>
-	}
-
-	public void setAmount(float amount) {
-<span class="nc" id="L55">		this.amount = amount;</span>
-<span class="nc" id="L56">	}</span>
-
-	public Timestamp getSubmitted() {
-<span class="nc" id="L59">		return submitted;</span>
-	}
-
-	public void setSubmitted(Timestamp submitted) {
-<span class="nc" id="L63">		this.submitted = submitted;</span>
-<span class="nc" id="L64">	}</span>
-
-	public Timestamp getResolved() {
-<span class="nc" id="L67">		return resolved;</span>
-	}
-
-	public void setResolved(Timestamp resolved) {
-<span class="nc" id="L71">		this.resolved = resolved;</span>
-<span class="nc" id="L72">	}</span>
-
-	public String getDescription() {
-<span class="nc" id="L75">		return description;</span>
-	}
-
-	public void setDescription(String description) {
-<span class="nc" id="L79">		this.description = description;</span>
-<span class="nc" id="L80">	}</span>
-
-	public int getAuthor() {
-<span class="nc" id="L83">		return author;</span>
-	}
-
-	public void setAuthor(int author) {
-<span class="nc" id="L87">		this.author = author;</span>
-<span class="nc" id="L88">	}</span>
-
-	public int getResolver() {
-<span class="nc" id="L91">		return resolver;</span>
-	}
-
-	public void setResolver(int resolver) {
-<span class="nc" id="L95">		this.resolver = resolver;</span>
-<span class="nc" id="L96">	}</span>
-
-	public int getStatus_id() {
-<span class="nc" id="L99">		return status_id;</span>
-	}
-
-	public void setStatus_id(int status_id) {
-<span class="nc" id="L103">		this.status_id = status_id;</span>
-<span class="nc" id="L104">	}</span>
-
-	public int getType_id() {
-<span class="nc" id="L107">		return type_id;</span>
-	}
-
-	public void setType_id(int type_id) {
-<span class="nc" id="L111">		this.type_id = type_id;</span>
-<span class="nc" id="L112">	}</span>
-
-	@Override
-	public int hashCode() {
-<span class="nc" id="L116">		final int prime = 31;</span>
-<span class="nc" id="L117">		int result = 1;</span>
-<span class="nc" id="L118">		result = prime * result + Float.floatToIntBits(amount);</span>
-<span class="nc" id="L119">		result = prime * result + author;</span>
-<span class="nc bnc" id="L120" title="All 2 branches missed.">		result = prime * result + ((description == null) ? 0 : description.hashCode());</span>
-<span class="nc" id="L121">		result = prime * result + id;</span>
-<span class="nc bnc" id="L122" title="All 2 branches missed.">		result = prime * result + ((resolved == null) ? 0 : resolved.hashCode());</span>
-<span class="nc" id="L123">		result = prime * result + resolver;</span>
-<span class="nc" id="L124">		result = prime * result + status_id;</span>
-<span class="nc bnc" id="L125" title="All 2 branches missed.">		result = prime * result + ((submitted == null) ? 0 : submitted.hashCode());</span>
-<span class="nc" id="L126">		result = prime * result + type_id;</span>
-<span class="nc" id="L127">		return result;</span>
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-<span class="nc bnc" id="L132" title="All 2 branches missed.">		if (this == obj)</span>
-<span class="nc" id="L133">			return true;</span>
-<span class="nc bnc" id="L134" title="All 2 branches missed.">		if (obj == null)</span>
-<span class="nc" id="L135">			return false;</span>
-<span class="nc bnc" id="L136" title="All 2 branches missed.">		if (getClass() != obj.getClass())</span>
-<span class="nc" id="L137">			return false;</span>
-<span class="nc" id="L138">		Reimbursement other = (Reimbursement) obj;</span>
-<span class="nc bnc" id="L139" title="All 2 branches missed.">		if (Float.floatToIntBits(amount) != Float.floatToIntBits(other.amount))</span>
-<span class="nc" id="L140">			return false;</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">		if (author != other.author)</span>
-<span class="nc" id="L142">			return false;</span>
-<span class="nc bnc" id="L143" title="All 2 branches missed.">		if (description == null) {</span>
-<span class="nc bnc" id="L144" title="All 2 branches missed.">			if (other.description != null)</span>
-<span class="nc" id="L145">				return false;</span>
-<span class="nc bnc" id="L146" title="All 2 branches missed.">		} else if (!description.equals(other.description))</span>
-<span class="nc" id="L147">			return false;</span>
-<span class="nc bnc" id="L148" title="All 2 branches missed.">		if (id != other.id)</span>
-<span class="nc" id="L149">			return false;</span>
-<span class="nc bnc" id="L150" title="All 2 branches missed.">		if (resolved == null) {</span>
-<span class="nc bnc" id="L151" title="All 2 branches missed.">			if (other.resolved != null)</span>
-<span class="nc" id="L152">				return false;</span>
-<span class="nc bnc" id="L153" title="All 2 branches missed.">		} else if (!resolved.equals(other.resolved))</span>
-<span class="nc" id="L154">			return false;</span>
-<span class="nc bnc" id="L155" title="All 2 branches missed.">		if (resolver != other.resolver)</span>
-<span class="nc" id="L156">			return false;</span>
-<span class="nc bnc" id="L157" title="All 2 branches missed.">		if (status_id != other.status_id)</span>
-<span class="nc" id="L158">			return false;</span>
-<span class="nc bnc" id="L159" title="All 2 branches missed.">		if (submitted == null) {</span>
-<span class="nc bnc" id="L160" title="All 2 branches missed.">			if (other.submitted != null)</span>
-<span class="nc" id="L161">				return false;</span>
-<span class="nc bnc" id="L162" title="All 2 branches missed.">		} else if (!submitted.equals(other.submitted))</span>
-<span class="nc" id="L163">			return false;</span>
-<span class="nc bnc" id="L164" title="All 2 branches missed.">		if (type_id != other.type_id)</span>
-<span class="nc" id="L165">			return false;</span>
-<span class="nc" id="L166">		return true;</span>
-	}
-
-	@Override
-	public String toString() {
-<span class="nc" id="L171">		return &quot;Reimbursement [id=&quot; + id + &quot;, amount=&quot; + amount + &quot;, submitted=&quot; + submitted + &quot;, resolved=&quot; + resolved</span>
-				+ &quot;, description=&quot; + description + &quot;, author=&quot; + author + &quot;, resolver=&quot; + resolver + &quot;, status_id=&quot;
-				+ status_id + &quot;, type_id=&quot; + type_id + &quot;]&quot;;
-	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

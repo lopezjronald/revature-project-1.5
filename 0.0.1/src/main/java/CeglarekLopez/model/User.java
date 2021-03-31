@@ -1,5 +1,6 @@
 package CeglarekLopez.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,12 +10,12 @@ import javax.persistence.*;
 
 
 @Entity
-//@Table(name = "users", schema = "public")
 @Table(name="users")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
 	@Id
@@ -25,7 +26,7 @@ public class User {
 	@Column(name = "username")
 	private String username;
 
-	@Column(name = "password")
+	@Column(name="password")
 	private String password;
 
 	@Column(name = "first_name")
