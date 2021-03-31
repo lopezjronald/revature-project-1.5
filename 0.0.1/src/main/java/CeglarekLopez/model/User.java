@@ -9,7 +9,6 @@ import javax.persistence.*;
 
 
 @Entity
-//@Table(name = "users", schema = "public")
 @Table(name="users")
 @Data
 @Builder
@@ -25,7 +24,7 @@ public class User {
 	@Column(name = "username")
 	private String username;
 
-	@Column(name = "password")
+	@Column(name="password")
 	private String password;
 
 	@Column(name = "first_name")

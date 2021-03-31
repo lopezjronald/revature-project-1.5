@@ -1,14 +1,13 @@
 package CeglarekLopez.service;
 
+import CeglarekLopez.dao.UserDao;
+import CeglarekLopez.model.User;
+import org.apache.log4j.Logger;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-
-import org.apache.log4j.Logger;
-
-import CeglarekLopez.dao.UserDao;
-import CeglarekLopez.model.User;
 
 public class UserService {
 	private UserDao userDao;

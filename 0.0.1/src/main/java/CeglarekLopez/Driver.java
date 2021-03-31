@@ -13,7 +13,7 @@ public class Driver {
 
         UserDao userDao = new UserDao();
 
-        int number = 2;
+        int number = 3;
         String username = "username" + number;
         String password = "password" + number;
         String firstName = "firstName" + number;

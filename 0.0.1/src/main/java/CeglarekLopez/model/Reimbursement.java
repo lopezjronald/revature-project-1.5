@@ -19,16 +19,16 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class Reimbursement {
 
-	@Id
-	@GeneratedValue
-	private int id;
-	private float amount;
-	private Timestamp submitted;
-	private Timestamp resolved;
-	private String description;
-	private int author;
-	private int resolver;
-	private int statusId;
-	private int typeId;
+    @Id
+    @GeneratedValue
+    private int id;
+    private float amount;
+    private Timestamp submitted;
+    private Timestamp resolved;
+    private String description;
+    private int author;
+    private int resolver;
+    private int statusId;
+    private int typeId;
 
 }
