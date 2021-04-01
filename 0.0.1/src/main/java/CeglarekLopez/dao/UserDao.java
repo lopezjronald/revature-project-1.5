@@ -28,22 +28,13 @@ public class UserDao implements GenericDao <User> {
 	
 	@Override
 	public List<User> getList() {
-//		List<User> l = new ArrayList<User>();
-//
-//		try (Connection c = ConnectionUtil.getInstance().getConnection()) {
-//			String qSql = "SELECT * FROM ers_users";
-//			Statement s = c.createStatement();
-//			ResultSet rs = s.executeQuery(qSql);
-//
-//			while(rs.next()) {
-//				l.add(objectConstructor(rs));
-//			}
-//			LOGGER.debug("A list of users was retrieved from the database.");
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			LOGGER.error("An attempt to get all users from the database failed.");
-//		}
-		return null;
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+//		session.beginTransaction();
+		List<?> userList = session.createQuery("from User", User.class).list();
+		session.close();
+
+		return (List<User>) userList;
 	}
 
 	@Override
