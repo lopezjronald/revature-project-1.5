@@ -14,15 +14,15 @@ public class Driver {
         UserDao userDao = new UserDao();
 
         int number = 4;
-        String username = "username" + number;
-        String password = "password" + number;
-        String firstName = "firstName" + number;
-        String lastName = "lastName" + number;
-        String email = "email" + number;
+        String username = "steven" + number;
+        String password = "12345678" + number;
+        String firstName = "steven" + number;
+        String lastName = "ceg" + number;
+        String email = "email!g.com" + number;
         int roleId = 1;
 
 
-        User user = new User(username, password, firstName, lastName, email, 1);
+        User user = new User(username, password, firstName, lastName, email, roleId);
 
         System.out.println(user.toString());
 
