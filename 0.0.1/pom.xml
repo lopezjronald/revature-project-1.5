@@ -34,6 +34,7 @@
         <hibernate-hikaricp.version>5.2.6.Final</hibernate-hikaricp.version>
         <javax-persistence-api.version>2.2</javax-persistence-api.version>
         <postgresql-jdbc.version>9.1-901-1.jdbc4</postgresql-jdbc.version>
+        <jstl.version>1.2</jstl.version>
     </properties>
 
     <dependencies>
@@ -115,6 +116,14 @@
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>2.3.3</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/jstl/jstl -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.hibernate</groupId>

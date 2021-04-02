@@ -24,12 +24,12 @@ public class Driver {
 //        User user = new User(username, password, firstName, lastName, email, roleId);
 //        userService.newUser(user);
 
-        List<User> users = userService.fetchAllUsers();
-        for(User eachUser: users) {
-            System.out.println(eachUser.toString());
-        }
+//        List<User> users = userService.fetchAllUsers();
+//        for(User eachUser: users) {
+//            System.out.println(eachUser.toString());
+//        }
 
-//        User user = userService.getUserById(11);
-//        userService.removeUser(user);
+        User user = userService.getUserById(19);
+        System.out.println(user.toString());
     }
 }
