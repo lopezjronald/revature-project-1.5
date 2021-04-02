@@ -26,10 +26,10 @@ public class Reimbursement {
     private float amount;
 
     @Column(name = "submitted")
-    private Timestamp submitted;
+    private java.sql.Timestamp submitted;
 
     @Column(name = "resolved")
-    private Timestamp resolved;
+    private java.sql.Timestamp resolved;
 
     @Column(name = "description")
     private String description;
