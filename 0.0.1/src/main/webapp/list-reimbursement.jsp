@@ -1,32 +1,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>All Users</title>
+    <title>All Reimbursements</title>
 </head>
 <body>
 
-<h2>All Users in the System</h2>
-<c:forEach var="user" items="${USER_LIST}">
-    <c:url var="updateLink" value="/users">
-        <c:param name="command" value="LOAD" />
-        <c:param name="id" value="${user.id}" />
+<h2>All Reimbursements in the System</h2>
+<c:forEach var="reimbursement" items="${REIMBURSEMENT_LIST}">
+    <c:url var="updateLink" value="/reimbursements">
+        <c:param name="reimbursement-command" value="LOAD_REIMBURSEMENT" />
+        <c:param name="id" value="${reimbursement.id}" />
     </c:url>
     <c:url var="deleteLink" value="/users">
-        <c:param name="command" value="DELETE" />
-        <c:param name="id" value="${user.id}" />
+        <c:param name="reimbursement-command" value="DELETE_REIMBURSEMENT" />
+        <c:param name="id" value="${reimbursement.id}" />
     </c:url>
     <p>
-        ID #: ${user.id} |
-        Username: ${user.username} |
-        Password: ${user.password} |
-        First Name: ${user.firstName} |
-        Last Name: ${user.lastName} |
-        Email: ${user.email} |
-        Role #: ${user.roleId}
+        ID #: ${reimbursement.id} |
+
+        Type ID#: ${reimbursement.typeId}
     </p>
     <p>
 <%--        <a href="${updateLink}">Update User</a> |--%>
-        <a href="${deleteLink}" onclick="if (!(confirm('Confirm: Delete ${user.username} from the system?'))) return false">Delete User</a>
+        <a href="${deleteLink}" onclick="if (!(confirm('Confirm: Delete ${reimbursement.id} from the system?'))) return false">Delete Reimbursement</a>
     </p>
     <hr>
 </c:forEach>

@@ -4,30 +4,22 @@
 </head>
 <body>
 <h2>Add A User</h2>
-<form action="${pageContext.request.contextPath}/users" method="get">
-    <input type="hidden" name="command" value="ADD">
-    <input type="hidden" value="1" name="roleId"/>
-    <label>Username</label>
+<form action="${pageContext.request.contextPath}/reimbursements" method="get">
+    <input type="hidden" name="command" value="ADD_REIMBURSEMENT">
+    <input type="hidden" value="1" name="typeId"/>
+    <input type="hidden" value="1" name="statusId"/>
+    <input type="hidden" value="1" name="resolverId"/>
+    <input type="hidden" value="1" name="authorId"/>
+
+    <label>Amount</label>
     <br><br>
-    <input type="text" name="username" placeholder="username"/>
+    <input step="0.01" value="0.00" type="number" placeholder="amount"/>
     <br><br>
-    <label>Password</label>
+    <label>Description</label>
     <br><br>
-    <input type="password" name="password" placeholder="password"/>
+    <input type="text" name="description" placeholder="description"/>
     <br><br>
-    <label>First Name</label>
-    <br><br>
-    <input type="text" name="firstName" placeholder="first name"/>
-    <br><br>
-    <label>Last Name</label>
-    <br><br>
-    <input type="text" name="lastName" placeholder="last name"/>
-    <br><br>
-    <label>Email</label>
-    <br><br>
-    <input type="email" name="email" placeholder="email"/>
-    <br><br>
-    <input type="submit" value="Save New User"/>
+    <input type="submit" value="Save Reimbursement"/>
 </form>
 
 <h3><a href="${pageContext.request.contextPath}/">Back to Home Page</a></h3>
