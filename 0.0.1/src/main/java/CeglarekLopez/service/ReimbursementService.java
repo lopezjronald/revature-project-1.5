@@ -9,18 +9,18 @@ import CeglarekLopez.dao.ReimbursementDao;
 import CeglarekLopez.model.Reimbursement;
 
 public class ReimbursementService {
-	private ReimbursementDao rd;
+	private final ReimbursementDao reimbursementDao;
 	private static final Logger LOGGER = Logger.getLogger(ReimbursementService.class);
 	
 	public ReimbursementService() {
-		rd = new ReimbursementDao();
+		reimbursementDao = new ReimbursementDao();
 	}
 	
 	public void createReimbursement(String json) {
 		try {
 			Reimbursement r = new ObjectMapper().readValue(json, Reimbursement.class);
 			LOGGER.debug("JSON from the client was successfully parsed.");
-			rd.insert(r);
+			reimbursementDao.insert(r);
 		} catch (Exception e) {
 			LOGGER.error("Something occurred during JSON parsing for a new reimbursement. Is the JSON malformed?");
 			e.printStackTrace();
@@ -28,14 +28,14 @@ public class ReimbursementService {
 	}
 	
 	public List<Reimbursement> fetchAllReimbursements() {
-		return rd.getList();
+		return reimbursementDao.getList();
 	}
-	
-	public List<Reimbursement> getReimbursementsByUserID(int id) {
-		return rd.getByUserId(id);
+
+	public Reimbursement getReimbursementByID(int id) {
+		return reimbursementDao.getById(id);
 	}
-	
+
 	public void updateReimbursements(int[][] i, int r) {
-		rd.updateList(i, r);
+		reimbursementDao.updateList(i, r);
 	}
 }

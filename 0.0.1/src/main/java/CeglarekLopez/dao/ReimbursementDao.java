@@ -1,20 +1,11 @@
 package CeglarekLopez.dao;
 
-import java.sql.Array;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
-import CeglarekLopez.model.User;
-import CeglarekLopez.util.HibernateUtil;
+import CeglarekLopez.util.HibernateReimbursementUtil;
 import org.apache.log4j.Logger;
 
 import CeglarekLopez.model.Reimbursement;
@@ -34,7 +25,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 
 	@Override
 	public List<Reimbursement> getList() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateReimbursementUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		List<Reimbursement> reimbursementList = session.createQuery("from Reimbursement ", Reimbursement.class).list();
 		session.close();
@@ -43,7 +34,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 
 	@Override
 	public Reimbursement getById(int id) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateReimbursementUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Reimbursement reimbursement = session.get(Reimbursement.class, id);
 		session.getTransaction().commit();
@@ -82,7 +73,7 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 
 	@Override
 	public void insert(Reimbursement r) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateReimbursementUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.save(r);
 		session.getTransaction().commit();

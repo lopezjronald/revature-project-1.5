@@ -1,19 +1,15 @@
 package CeglarekLopez.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import CeglarekLopez.util.HibernateUtil;
+import CeglarekLopez.util.HibernateUserUtil;
 import org.apache.log4j.Logger;
 
 import CeglarekLopez.model.User;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 /*
  * Purpose of this Dao is to send/retrieve info about a reimbursement
@@ -30,7 +26,7 @@ public class UserDao implements GenericDao <User> {
 	
 	@Override
 	public List<User> getList() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUserUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		List<User> userList = session.createQuery("from User", User.class).list();
 		session.close();
@@ -39,7 +35,7 @@ public class UserDao implements GenericDao <User> {
 
 	@Override
 	public User getById(int id) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUserUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		User user = session.get(User.class, id);
 		session.getTransaction().commit();
@@ -59,7 +55,7 @@ public class UserDao implements GenericDao <User> {
 
 	@Override
 	public void insert(User t) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUserUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.save(t);
 		session.getTransaction().commit();
@@ -68,7 +64,7 @@ public class UserDao implements GenericDao <User> {
 
 	@Override
 	public void delete(User t) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUserUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.delete(t);
 		session.getTransaction().commit();

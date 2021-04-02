@@ -1,16 +1,17 @@
 package CeglarekLopez;
 
-import CeglarekLopez.dao.UserDao;
+import CeglarekLopez.dao.ReimbursementDao;
+import CeglarekLopez.model.Reimbursement;
 import CeglarekLopez.model.User;
+import CeglarekLopez.service.ReimbursementService;
 import CeglarekLopez.service.UserService;
-
-import java.util.List;
 
 public class Driver {
 
     public static void main(String[] args) {
 
         UserService userService = new UserService();
+        ReimbursementDao reimbursementDao = new ReimbursementDao();
 
 //        int number = 11;
 //        String username = "username" + number;
@@ -31,5 +32,9 @@ public class Driver {
 
         User user = userService.getUserById(19);
         System.out.println(user.toString());
+
+        Reimbursement reimbursement = reimbursementDao.getById(1);
+        System.out.println(reimbursement.toString());
+
     }
 }
