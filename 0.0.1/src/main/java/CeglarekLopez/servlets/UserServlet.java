@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.List;
 
 
@@ -31,14 +28,11 @@ public class UserServlet extends HttpServlet {
             }
             switch (command) {
                 case "LIST":
-                   listUsers(request, response);
-                   break;
+                    listUsers(request, response);
+                    break;
                 case "ADD":
                     addUser(request, response);
                     break;
-//                case "LOAD":
-//                    System.out.println("Need to add updating function here");
-//                    break;
                 case "DELETE":
                     deleteUser(request, response);
                     break;
@@ -50,7 +44,7 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    private void listUsers(HttpServletRequest request, HttpServletResponse response)  {
+    private void listUsers(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<User> users = userService.fetchAllUsers();
             String usersJson = gson.toJson(users);
@@ -75,7 +69,7 @@ public class UserServlet extends HttpServlet {
         listUsers(request, response);
     }
 
-    private void deleteUser(HttpServletRequest request, HttpServletResponse response){
+    private void deleteUser(HttpServletRequest request, HttpServletResponse response) {
         String userId = request.getParameter("id");
         User user = userService.getUserById(Integer.parseInt(userId));
         userService.removeUser(user);

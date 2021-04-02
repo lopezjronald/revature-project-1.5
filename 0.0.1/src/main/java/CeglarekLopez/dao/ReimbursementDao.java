@@ -13,9 +13,12 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import CeglarekLopez.model.User;
+import CeglarekLopez.util.HibernateUtil;
 import org.apache.log4j.Logger;
 
 import CeglarekLopez.model.Reimbursement;
+import org.hibernate.Session;
 
 /*
  * Purpose of this Dao is to send/retrieve info about a reimbursement
@@ -31,48 +34,21 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 
 	@Override
 	public List<Reimbursement> getList() {
-//		List<Reimbursement> l = new ArrayList<Reimbursement>();
-//
-//		try (Connection c = ConnectionUtil.getInstance().getConnection()) {
-//			String qSql = "SELECT * FROM ers_reimbursement";
-//			Statement s = c.createStatement();
-//			ResultSet rs = s.executeQuery(qSql);
-//
-//			while(rs.next()) {
-//				l.add(objectConstructor(rs));
-//			}
-//
-//			rs.close();
-//			s.closeOnCompletion();
-//			LOGGER.debug("All reimbursements were retrieved from the database.");
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			LOGGER.error("An attempt to get all reimbursements failed.");
-//		}
-		return null;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		List<Reimbursement> reimbursementList = session.createQuery("from Reimbursement ", Reimbursement.class).list();
+		session.close();
+		return reimbursementList;
 	}
 
 	@Override
 	public Reimbursement getById(int id) {
-		Reimbursement r = null;
-//
-//		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
-//			String qSql = "SELECT * FROM ers_reimbursement WHERE reimb_id = ?";
-//			PreparedStatement ps = c.prepareStatement(qSql);
-//			ps.setInt(1, id);
-//			ResultSet rs = ps.executeQuery();
-//
-//			if(rs.next())
-//				r = objectConstructor(rs);
-//
-//			rs.close();
-//			ps.closeOnCompletion();
-//			LOGGER.debug("A reimbursement by ID " + id + " was retrieved from the database.");
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			LOGGER.error("An attempt to get a reimbursement by ID" + id + " from the database failed.");
-//		}
-		return r;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		Reimbursement reimbursement = session.get(Reimbursement.class, id);
+		session.getTransaction().commit();
+		session.close();
+		return reimbursement;
 	}
 	
 	@Override
@@ -106,25 +82,11 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 
 	@Override
 	public void insert(Reimbursement r) {
-//		try(Connection c = ConnectionUtil.getInstance().getConnection()) {
-//			String sql = "INSERT INTO ers_reimbursement(reimb_amount, reimb_submitted, reimb_description, "
-//					   + "reimb_author, reimb_status_id, reimb_type_id) VALUES(?, ?, ?, ?, ?, ?)";
-//			PreparedStatement ps = c.prepareStatement(sql);
-//			ps.setFloat(1, r.getAmount());
-//			Calendar cal = Calendar.getInstance();
-//			ps.setTimestamp(2, new Timestamp(cal.getTime().getTime()));
-//			ps.setString(3, r.getDescription());
-//			ps.setInt(4, r.getAuthor());
-//			ps.setInt(5, r.getStatus_id());
-//			ps.setInt(6, r.getType_id());
-//
-//			ps.executeUpdate();
-//			ps.closeOnCompletion();
-//			LOGGER.debug("A new reimbursement was successfully added to the database.");
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			LOGGER.error("An attempt to insert a reimbursement to the database failed.");
-//		}
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.save(r);
+		session.getTransaction().commit();
+		session.close();
 	}
 	
 	public void updateList(int[][] i, int resolver) {
