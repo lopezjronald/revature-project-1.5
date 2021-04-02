@@ -32,7 +32,7 @@ public class UserService {
 			LOGGER.trace("Password info removed from username " + username + ".");
 			return user;
 		}
-		return null;
+		return user;
 	}
 
 	public void newUser(User user) {
@@ -69,4 +69,9 @@ public class UserService {
 		
 		return null;
 	}
+
+	public void removeUser(User user) {
+		userDao.delete(user);
+	}
+
 }

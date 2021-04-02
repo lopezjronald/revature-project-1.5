@@ -4,6 +4,7 @@
         " http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+        <property name="hibernate.session_factory_name">jdbc/project_1.5</property>
 
         <property name="hibernate.hbm2ddl.auto">update</property>
 
