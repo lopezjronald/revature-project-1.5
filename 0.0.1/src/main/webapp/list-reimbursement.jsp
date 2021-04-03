@@ -8,11 +8,11 @@
 <h2>All Reimbursements in the System</h2>
 <c:forEach var="reimbursement" items="${REIMBURSEMENT_LIST}">
     <c:url var="updateLink" value="/reimbursements">
-        <c:param name="reimbursement-command" value="LOAD" />
+        <c:param name="command" value="LOAD" />
         <c:param name="id" value="${reimbursement.id}" />
     </c:url>
-    <c:url var="deleteLink" value="/users">
-        <c:param name="reimbursement-command" value="DELETE" />
+    <c:url var="deleteLink" value="/reimbursements">
+        <c:param name="command" value="DELETE" />
         <c:param name="id" value="${reimbursement.id}" />
     </c:url>
     <p>
