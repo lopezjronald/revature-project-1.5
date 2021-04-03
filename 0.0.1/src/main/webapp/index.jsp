@@ -10,8 +10,8 @@
     <p><a href="${pageContext.request.contextPath}/users">Display All Users</a></p>
     <p><a href="add-user-form.jsp">Add A User</a></p>
     <br>
-    <p><a href="">Display All Reimbursements</a></p>
-    <p><a href="">Add a Reimbursement</a></p>
+    <p><a href="${pageContext.request.contextPath}/reimbursements">Display All Reimbursements</a></p>
+    <p><a href="add-reimbursement-form.jsp">Add a Reimbursement</a></p>
 </h3>
 
 

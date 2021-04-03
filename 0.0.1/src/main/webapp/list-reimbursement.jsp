@@ -8,16 +8,17 @@
 <h2>All Reimbursements in the System</h2>
 <c:forEach var="reimbursement" items="${REIMBURSEMENT_LIST}">
     <c:url var="updateLink" value="/reimbursements">
-        <c:param name="reimbursement-command" value="LOAD_REIMBURSEMENT" />
+        <c:param name="reimbursement-command" value="LOAD" />
         <c:param name="id" value="${reimbursement.id}" />
     </c:url>
     <c:url var="deleteLink" value="/users">
-        <c:param name="reimbursement-command" value="DELETE_REIMBURSEMENT" />
+        <c:param name="reimbursement-command" value="DELETE" />
         <c:param name="id" value="${reimbursement.id}" />
     </c:url>
     <p>
         ID #: ${reimbursement.id} |
-
+        Amount: $${reimbursement.amount} |
+        Description: ${reimbursement.description} |
         Type ID#: ${reimbursement.typeId}
     </p>
     <p>

@@ -1,7 +1,6 @@
 package CeglarekLopez.servlets;
 
 import CeglarekLopez.model.User;
-import CeglarekLopez.service.ReimbursementService;
 import CeglarekLopez.service.UserService;
 import com.google.gson.Gson;
 
@@ -16,7 +15,7 @@ import java.util.List;
 
 
 @WebServlet(urlPatterns = "/users")
-public class Servlet extends HttpServlet {
+public class UserServlet extends HttpServlet {
     UserService userService = new UserService();
     Gson gson = new Gson();
 
@@ -45,45 +44,6 @@ public class Servlet extends HttpServlet {
         }
     }
 
-    @WebServlet(urlPatterns = "/reimbursements")
-    public class ReimbursementServlet extends HttpServlet {
-        ReimbursementService reimbursementService = new ReimbursementService();
-        Gson gson = new Gson();
-
-        @Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-            try {
-                String command = request.getParameter("reimbursement-command");
-                if (command == null) {
-                    command = "LIST_REIMBURSEMENT";
-                }
-                switch (command) {
-                    case "LIST_REIMBURSEMENT":
-                        listReimbursements(request, response);
-                        break;
-                    case "ADD_REIMBURSEMENT":
-                        addReimbursement(request, response);
-                        break;
-                    case "DELETE_REIMBURSEMENT":
-                        deleteReimbursement(request, response);
-                        break;
-                    default:
-                        listReimbursements(request, response);
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-
-    private void deleteReimbursement(HttpServletRequest request, HttpServletResponse response) {
-    }
-
-    private void addReimbursement(HttpServletRequest request, HttpServletResponse response) {
-    }
-
-    private void listReimbursements(HttpServletRequest request, HttpServletResponse response) {
-    }
 
     private void listUsers(HttpServletRequest request, HttpServletResponse response) {
         try {

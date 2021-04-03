@@ -2,6 +2,7 @@ package CeglarekLopez.service;
 
 import java.util.List;
 
+import CeglarekLopez.model.User;
 import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,6 +27,12 @@ public class ReimbursementService {
 			e.printStackTrace();
 		}
 	}
+
+	public void newReimbursement(Reimbursement reimbursement) {
+		reimbursementDao.insert(reimbursement);
+	}
+
+
 	
 	public List<Reimbursement> fetchAllReimbursements() {
 		return reimbursementDao.getList();
@@ -37,5 +44,9 @@ public class ReimbursementService {
 
 	public void updateReimbursements(int[][] i, int r) {
 		reimbursementDao.updateList(i, r);
+	}
+
+	public void removeReimbursement(Reimbursement reimbursement) {
+		reimbursementDao.delete(reimbursement);
 	}
 }
