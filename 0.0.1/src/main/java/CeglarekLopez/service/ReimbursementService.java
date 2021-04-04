@@ -46,6 +46,8 @@ public class ReimbursementService {
 		reimbursementDao.updateList(i, r);
 	}
 
+	public void updateReimbursement(Reimbursement reimbursement) {reimbursementDao.update(reimbursement);}
+
 	public void removeReimbursement(Reimbursement reimbursement) {
 		reimbursementDao.delete(reimbursement);
 	}

@@ -7,8 +7,7 @@
 
 <h2>All Users in the System</h2>
 <c:forEach var="user" items="${USER_LIST}">
-    <c:url var="updateLink" value="/users">
-        <c:param name="command" value="LOAD" />
+    <c:url var="updateLink" value="/updateUser">
         <c:param name="id" value="${user.id}" />
     </c:url>
     <c:url var="deleteLink" value="/users">
@@ -25,7 +24,7 @@
         Role #: ${user.roleId}
     </p>
     <p>
-<%--        <a href="${updateLink}">Update User</a> |--%>
+        <a href="${updateLink}">Update User</a> |
         <a href="${deleteLink}" onclick="if (!(confirm('Confirm: Delete ${user.username} from the system?'))) return false">Delete User</a>
     </p>
     <hr>

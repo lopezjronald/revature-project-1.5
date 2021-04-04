@@ -9,4 +9,5 @@ public interface GenericDao <T> {
 	T getByUsername(String username);
 	void insert(T t);
 	void delete(T t);
+	void update(T t);
 }

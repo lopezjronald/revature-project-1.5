@@ -70,4 +70,13 @@ public class UserDao implements GenericDao <User> {
 		session.getTransaction().commit();
 		session.close();
 	}
+
+	@Override
+	public void update(User user) {
+		Session session = HibernateUserUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.merge(user);
+		session.getTransaction().commit();
+		session.close();
+	}
 }

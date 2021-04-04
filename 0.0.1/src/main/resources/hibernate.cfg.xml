@@ -33,6 +33,7 @@
         <property name="hibernate.hikari.idleTimeout">30000</property>
 
         <mapping class = "CeglarekLopez.model.User"/>
+        <mapping class = "CeglarekLopez.model.Reimbursement"/>
 
     </session-factory>
 </hibernate-configuration>
