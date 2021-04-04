@@ -32,42 +32,49 @@ public class UserService {
 <span class="nc" id="L32">			LOGGER.trace(&quot;Password info removed from username &quot; + username + &quot;.&quot;);</span>
 <span class="nc" id="L33">			return user;</span>
 		}
-<span class="nc" id="L35">		return null;</span>
+<span class="nc" id="L35">		return user;</span>
 	}
 
+<span class="nc" id="L38">	public void updateUser(User user) {userDao.update(user);}</span>
+
 	public void newUser(User user) {
-<span class="nc" id="L39">		userDao.insert(user);</span>
-<span class="nc" id="L40">	}</span>
+<span class="nc" id="L41">		userDao.insert(user);</span>
+<span class="nc" id="L42">	}</span>
 	
 	public User getUserByLogin(String user, String password) {
-<span class="nc" id="L43">		User u = this.userDao.getByUsername(user);</span>
+<span class="nc" id="L45">		User u = this.userDao.getByUsername(user);</span>
 		
-<span class="nc bnc" id="L45" title="All 2 branches missed.">		if(u != null) {</span>
-<span class="nc" id="L46">		String full = user + password + &quot;salt&quot;;</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">		if(u != null) {</span>
+<span class="nc" id="L48">		String full = user + password + &quot;salt&quot;;</span>
 			try {
 				//Let MessageDigest know that we want to hash using MD5
-<span class="nc" id="L49">				MessageDigest m = MessageDigest.getInstance(&quot;md5&quot;);</span>
+<span class="nc" id="L51">				MessageDigest m = MessageDigest.getInstance(&quot;md5&quot;);</span>
 				//Convert our full string to a byte array.
-<span class="nc" id="L51">				byte[] messageDigest = m.digest(full.getBytes());</span>
+<span class="nc" id="L53">				byte[] messageDigest = m.digest(full.getBytes());</span>
 				//Convert our byte array into a signum representation of its former self.
-<span class="nc" id="L53">				BigInteger n = new BigInteger(1, messageDigest);</span>
+<span class="nc" id="L55">				BigInteger n = new BigInteger(1, messageDigest);</span>
 				
 				//Convert the whole array into a hexadecimal string.
-<span class="nc" id="L56">				String hash = n.toString(16);</span>
-<span class="nc bnc" id="L57" title="All 2 branches missed.">				while(hash.length() &lt; 32) {</span>
-<span class="nc" id="L58">					hash = &quot;0&quot; + hash;</span>
+<span class="nc" id="L58">				String hash = n.toString(16);</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">				while(hash.length() &lt; 32) {</span>
+<span class="nc" id="L60">					hash = &quot;0&quot; + hash;</span>
 				}
 				
-<span class="nc bnc" id="L61" title="All 2 branches missed.">				if(u.getPassword().equals(hash)) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">				if(u.getPassword().equals(hash)) {</span>
 					//System.out.println(&quot;Hash matched!&quot;);
-<span class="nc" id="L63">					return u;</span>
+<span class="nc" id="L65">					return u;</span>
 				}
-<span class="nc" id="L65">			} catch (NoSuchAlgorithmException e) {</span>
-<span class="nc" id="L66">				e.printStackTrace();</span>
-<span class="nc" id="L67">			}</span>
+<span class="nc" id="L67">			} catch (NoSuchAlgorithmException e) {</span>
+<span class="nc" id="L68">				e.printStackTrace();</span>
+<span class="nc" id="L69">			}</span>
 		}
 		
-<span class="nc" id="L70">		return null;</span>
+<span class="nc" id="L72">		return null;</span>
 	}
+
+	public void removeUser(User user) {
+<span class="nc" id="L76">		userDao.delete(user);</span>
+<span class="nc" id="L77">	}</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -7,10 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
+import java.util.List;
 
 @Entity
-@Table(name=&quot;users&quot;)
+@Table(name = &quot;users&quot;)
 <span class="nc bnc" id="L14" title="All 50 branches missed.">@Data</span>
 <span class="nc" id="L15">@Builder</span>
 <span class="nc" id="L16">@NoArgsConstructor</span>
@@ -18,37 +18,41 @@ import javax.persistence.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = &quot;id&quot;)
-<span class="fc" id="L24">	private int id;</span>
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = &quot;id&quot;)
+<span class="fc" id="L24">    private int id;</span>
 
-	@Column(name = &quot;username&quot;)
-<span class="fc" id="L27">	private String username;</span>
+    @Column(name = &quot;username&quot;)
+<span class="fc" id="L27">    private String username;</span>
 
-	@Column(name=&quot;password&quot;)
-<span class="fc" id="L30">	private String password;</span>
+    @Column(name = &quot;password&quot;)
+<span class="fc" id="L30">    private String password;</span>
 
-	@Column(name = &quot;first_name&quot;)
-<span class="fc" id="L33">	private String firstName;</span>
+    @Column(name = &quot;first_name&quot;)
+<span class="fc" id="L33">    private String firstName;</span>
 
-	@Column(name = &quot;last_name&quot;)
-<span class="fc" id="L36">	private String lastName;</span>
+    @Column(name = &quot;last_name&quot;)
+<span class="fc" id="L36">    private String lastName;</span>
 
-	@Column(name = &quot;email&quot;)
-<span class="fc" id="L39">	private String email;</span>
+    @Column(name = &quot;email&quot;)
+<span class="fc" id="L39">    private String email;</span>
 
-	@Column(name = &quot;role_id&quot;)
-<span class="fc" id="L42">	private int roleId;</span>
+    @Column(name = &quot;role_id&quot;)
+<span class="fc" id="L42">    private int roleId;</span>
 
-<span class="nc" id="L44">	public User(String username, String password, String firstName, String lastName, String email, int roleId){</span>
-<span class="nc" id="L45">		this.username = username;</span>
-<span class="nc" id="L46">		this.password = password;</span>
-<span class="nc" id="L47">		this.firstName = firstName;</span>
-<span class="nc" id="L48">		this.lastName = lastName;</span>
-<span class="nc" id="L49">		this.email = email;</span>
-<span class="nc" id="L50">		this.roleId = roleId;</span>
-<span class="nc" id="L51">	}</span>
+//    In case we implement a one to many relationship
+//    @OneToMany(mappedBy=&quot;user&quot;, fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+//    List&lt;Reimbursement&gt; reimbursements;
+
+<span class="nc" id="L48">    public User(String username, String password, String firstName, String lastName, String email, int roleId) {</span>
+<span class="nc" id="L49">        this.username = username;</span>
+<span class="nc" id="L50">        this.password = password;</span>
+<span class="nc" id="L51">        this.firstName = firstName;</span>
+<span class="nc" id="L52">        this.lastName = lastName;</span>
+<span class="nc" id="L53">        this.email = email;</span>
+<span class="nc" id="L54">        this.roleId = roleId;</span>
+<span class="nc" id="L55">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
