@@ -46,6 +46,10 @@ public class Reimbursement {
     @Column(name = "type_id")
     private int typeId;
 
+//    In case we implement a One to many relationship
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private User user;
+
     public Reimbursement(float amount, Timestamp submitted, Timestamp resolved, String description, int author, int resolver, int statusId, int typeId) {
         this.amount = amount;
         this.submitted = submitted;

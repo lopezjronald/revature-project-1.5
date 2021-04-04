@@ -7,8 +7,7 @@
 
 <h2>All Reimbursements in the System</h2>
 <c:forEach var="reimbursement" items="${REIMBURSEMENT_LIST}">
-    <c:url var="updateLink" value="/reimbursements">
-        <c:param name="command" value="LOAD" />
+    <c:url var="updateLink" value="/updateReimbursement">
         <c:param name="id" value="${reimbursement.id}" />
     </c:url>
     <c:url var="deleteLink" value="/reimbursements">
@@ -22,7 +21,7 @@
         Type ID#: ${reimbursement.typeId}
     </p>
     <p>
-<%--        <a href="${updateLink}">Update User</a> |--%>
+        <a href="${updateLink}">Update Reimbursement</a> |
         <a href="${deleteLink}" onclick="if (!(confirm('Confirm: Delete ${reimbursement.id} from the system?'))) return false">Delete Reimbursement</a>
     </p>
     <hr>

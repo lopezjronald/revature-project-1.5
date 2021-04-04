@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -39,6 +40,10 @@ public class User {
 
     @Column(name = "role_id")
     private int roleId;
+
+//    In case we implement a one to many relationship
+//    @OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+//    List<Reimbursement> reimbursements;
 
     public User(String username, String password, String firstName, String lastName, String email, int roleId) {
         this.username = username;

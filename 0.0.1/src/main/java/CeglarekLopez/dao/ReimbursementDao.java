@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import CeglarekLopez.model.User;
 import CeglarekLopez.util.HibernateReimbursementUtil;
 import CeglarekLopez.util.HibernateUserUtil;
 import org.apache.log4j.Logger;
@@ -129,6 +130,15 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 		Session session = HibernateReimbursementUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.delete(r);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Override
+	public void update(Reimbursement reimbursement) {
+		Session session = HibernateUserUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.merge(reimbursement);
 		session.getTransaction().commit();
 		session.close();
 	}
