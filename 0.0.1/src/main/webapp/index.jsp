@@ -1,8 +1,19 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Spring REST Demo</title>
+
+    <title>Servlet CRUD Operations</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/users">Display All Users</a>
+
+<h3>
+    <p><a href="${pageContext.request.contextPath}/users">Display All Users</a></p>
+    <p><a href="add-user-form.jsp">Add A User</a></p>
+    <br>
+    <p><a href="${pageContext.request.contextPath}/reimbursements">Display All Reimbursements</a></p>
+    <p><a href="add-reimbursement-form.jsp">Add a Reimbursement</a></p>
+</h3>
+
+
 </body>
 </html>

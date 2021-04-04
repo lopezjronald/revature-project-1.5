@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -24,13 +21,39 @@ public class Reimbursement {
     @Id
     @GeneratedValue
     private int id;
+
+    @Column(name = "amount")
     private float amount;
-    private Timestamp submitted;
-    private Timestamp resolved;
+
+    @Column(name = "submitted")
+    private java.sql.Timestamp submitted;
+
+    @Column(name = "resolved")
+    private java.sql.Timestamp resolved;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "author_id")
     private int author;
+
+    @Column(name = "resolver_id")
     private int resolver;
+
+    @Column(name = "status_id")
     private int statusId;
+
+    @Column(name = "type_id")
     private int typeId;
 
+    public Reimbursement(float amount, Timestamp submitted, Timestamp resolved, String description, int author, int resolver, int statusId, int typeId) {
+        this.amount = amount;
+        this.submitted = submitted;
+        this.resolved = resolved;
+        this.description = description;
+        this.author = author;
+        this.resolver = resolver;
+        this.statusId = statusId;
+        this.typeId = typeId;
+    }
 }
