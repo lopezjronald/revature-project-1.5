@@ -44,7 +44,6 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-
     private void listUsers(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<User> users = userService.fetchAllUsers();

@@ -2,9 +2,7 @@ package CeglarekLopez.servlets;
 
 
 import CeglarekLopez.model.Reimbursement;
-import CeglarekLopez.model.User;
 import CeglarekLopez.service.ReimbursementService;
-import CeglarekLopez.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +32,5 @@ public class UpdateReimbursementServlet extends HttpServlet {
         rs.updateReimbursement(reimbursement);
 
         resp.sendRedirect(req.getContextPath());
-
-
     }
 }

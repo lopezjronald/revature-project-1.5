@@ -79,9 +79,6 @@ public class ReimbursementServlet extends HttpServlet {
         listReimbursements(request, response);
     }
 
-
-
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
