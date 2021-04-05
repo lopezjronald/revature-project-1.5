@@ -1,1 +1,9 @@
 CeglarekLopez\model\UserTest.class
+CeglarekLopez\model\AuthorTest.class
+CeglarekLopez\dao\ReimbursementDaoTest.class
+CeglarekLopez\dao\UserDaoTest.class
+CeglarekLopez\model\ResolverTest.class
+CeglarekLopez\model\ReimbursementTest.class
+CeglarekLopez\model\RoleTest.class
+CeglarekLopez\model\TypeTest.class
+CeglarekLopez\model\StatusTest.class

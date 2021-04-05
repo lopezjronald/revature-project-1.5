@@ -45,22 +45,22 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
 
     @Override
     public List<Reimbursement> getByUserId(int id) {
-        List<Reimbursement> l = new ArrayList<Reimbursement>();
-        return l;
-    }
-
-    public Reimbursement getByUsername(String username) {
-        //Empty. Reason - No use.
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
-    public void insert(Reimbursement r) {
+    public Reimbursement getByUsername(String username) {
+        return new Reimbursement();
+    }
+
+    @Override
+    public int insert(Reimbursement r) {
         Session session = HibernateReimbursementUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(r);
+        int id = (int) session.save(r);
         session.getTransaction().commit();
         session.close();
+        return id;
     }
 
     @Override
