@@ -50,9 +50,7 @@ public class ReimbursementServlet extends HttpServlet {
     private void listReimbursements(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<Reimbursement> reimbursements = reimbursementService.fetchAllReimbursements();
-            String reimbursementJson = gson.toJson(reimbursements);
             request.setAttribute("REIMBURSEMENT_LIST", reimbursements);
-            request.setAttribute("REIMBURSEMENT_JSON", reimbursementJson);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/list-reimbursement.jsp");
             dispatcher.forward(request, response);
         } catch (IOException | ServletException e) {
@@ -64,7 +62,7 @@ public class ReimbursementServlet extends HttpServlet {
         try {
             List<Reimbursement> reimbursements = reimbursementService.fetchAllReimbursements();
             String reimbursementJson = gson.toJson(reimbursements);
-            response.getWriter().print(reimbursements);
+            response.getWriter().print(reimbursementJson);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
