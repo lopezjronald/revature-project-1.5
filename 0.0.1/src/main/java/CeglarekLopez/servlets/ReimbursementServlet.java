@@ -31,6 +31,8 @@ public class ReimbursementServlet extends HttpServlet {
                 case "LIST_REIMBURSEMENT":
                     listReimbursements(request, response);
                     break;
+                case "LIST_REIMBURSEMENT_JSON":
+                    listReimbursementsJson(request, response);
                 case "ADD":
                     addReimbursement(request, response);
                     break;
@@ -54,6 +56,16 @@ public class ReimbursementServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/list-reimbursement.jsp");
             dispatcher.forward(request, response);
         } catch (IOException | ServletException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void listReimbursementsJson(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            List<Reimbursement> reimbursements = reimbursementService.fetchAllReimbursements();
+            String reimbursementJson = gson.toJson(reimbursements);
+            response.getWriter().print(reimbursements);
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
