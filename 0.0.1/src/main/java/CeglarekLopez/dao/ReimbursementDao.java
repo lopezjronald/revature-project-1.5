@@ -48,8 +48,8 @@ public class ReimbursementDao implements GenericDao<Reimbursement> {
         return new ArrayList<>();
     }
 
+    @Override
     public Reimbursement getByUsername(String username) {
-        //Empty. Reason - No use.
         return new Reimbursement();
     }
 
