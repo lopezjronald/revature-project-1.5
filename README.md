@@ -13,7 +13,7 @@
 * Postman
 
 ### AWS Elastic Beanstalk Deployed Application
-[AWS Elastic Beanstalk Deployment Site](http://packagecloudproject15-env.eba-72encybg.us-east-2.elasticbeanstalk.com/)
+[AWS Elastic Beanstalk Deployment Site](http://packagecloudproject15-env.eba-72encybg.us-east-2.elasticbeanstalk.com/) - Offline
 
 ### WAR File Deployment
 [Package Cloud: Project 1.5 WAR File](https://packagecloud.io/lopezjronald/project_ceglarek_lopez_release)
