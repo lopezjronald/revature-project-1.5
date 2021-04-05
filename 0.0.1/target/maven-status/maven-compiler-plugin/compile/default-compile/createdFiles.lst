@@ -10,6 +10,7 @@ CeglarekLopez\servlets\UserServlet.class
 CeglarekLopez\util\HibernateUserUtil.class
 CeglarekLopez\dao\ReimbursementDao.class
 CeglarekLopez\service\UserService.class
+CeglarekLopez\servlets\UserPostmanServlet.class
 CeglarekLopez\model\Type.class
 CeglarekLopez\servlets\UpdateReimbursementServlet.class
 CeglarekLopez\model\Reimbursement.class
