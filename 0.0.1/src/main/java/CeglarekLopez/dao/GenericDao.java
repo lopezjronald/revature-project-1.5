@@ -7,7 +7,7 @@ public interface GenericDao <T> {
 	T getById(int id);
 	List<T> getByUserId(int id);
 	T getByUsername(String username);
-	void insert(T t);
+	int insert(T t);
 	void delete(T t);
 	void update(T t);
 }

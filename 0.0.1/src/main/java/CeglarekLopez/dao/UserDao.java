@@ -34,12 +34,16 @@ public class UserDao implements GenericDao<User> {
 
     @Override
     public User getById(int id) {
-        Session session = HibernateUserUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        User user = session.get(User.class, id);
-        session.getTransaction().commit();
-        session.close();
-        return user;
+        try {
+            Session session = HibernateUserUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            User user = session.get(User.class, id);
+            session.getTransaction().commit();
+            session.close();
+            return user;
+        } catch (Exception e) {
+            return new User();
+        }
     }
 
     @Override
@@ -49,16 +53,17 @@ public class UserDao implements GenericDao<User> {
 
     @Override
     public User getByUsername(String username) {
-        return null;
+        return new User();
     }
 
     @Override
-    public void insert(User t) {
+    public int insert(User t) {
         Session session = HibernateUserUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(t);
+        int id = (int) session.save(t);
         session.getTransaction().commit();
         session.close();
+        return id;
     }
 
     @Override
