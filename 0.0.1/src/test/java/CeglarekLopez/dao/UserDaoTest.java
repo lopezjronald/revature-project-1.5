@@ -25,11 +25,8 @@ class UserDaoTest {
     @Order(2)
     @Test
     void insert() {
-        User newUser = new User("testerUsername", "testerPassword", "testerFirst", "testerLast", "tester@email.com", 1);
-        assertNotNull(newUser);
         int id = userDao.insert(newUser);
-        User createdUser = userDao.getById(id);
-        assertEquals(id, createdUser.getId());
+        assertNotNull(userDao.getById(id));
     }
 
     @Order(3)
