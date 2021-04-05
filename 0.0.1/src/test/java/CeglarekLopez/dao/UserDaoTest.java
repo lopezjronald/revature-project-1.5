@@ -1,8 +1,10 @@
 package CeglarekLopez.dao;
 
 import CeglarekLopez.model.User;
-import org.junit.jupiter.api.*;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserDaoTest {
     UserDao userDao = new UserDao();
     User user = userDao.getById(1);
-    User newUser = new User("testerUsername", "testerPassword", "testerFirst", "testerLast", "tester@email.com", 1);
+    static User newUser = new User("testerUsername", "testerPassword", "testerFirst", "testerLast", "tester@email.com", 1);
 
 
     @Order(1)
