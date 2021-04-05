@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserDaoTest {
+
+    static int id;
     UserDao userDao = new UserDao();
     User user = userDao.getById(1);
     static User newUser = new User("testerUsername", "testerPassword", "testerFirst", "testerLast", "tester@email.com", 1);
@@ -27,7 +29,7 @@ class UserDaoTest {
     @Order(2)
     @Test
     void insert() {
-        int id = userDao.insert(newUser);
+        id = userDao.insert(newUser);
         assertNotNull(userDao.getById(id));
     }
 
@@ -54,7 +56,7 @@ class UserDaoTest {
     @Test
     void update() {
         User createdUser = new User(newUser.getUsername(), newUser.getPassword(), newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), newUser.getRoleId());
-        newUser.setUsername("updateUser");
+        newUser.setEmail("updateUser@email.com");
         userDao.update(newUser);
         assertNotEquals(createdUser, newUser);
     }
@@ -62,7 +64,10 @@ class UserDaoTest {
     @Order(7)
     @Test
     void delete() {
-        userDao.delete(newUser);
+        System.out.println(id);
+        User createUser = userDao.getById(id);
+        System.out.println(createUser.toString());
+        userDao.delete(createUser);
     }
 
 }
