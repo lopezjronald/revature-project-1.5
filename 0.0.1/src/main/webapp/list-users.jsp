@@ -14,6 +14,11 @@
         <c:param name="command" value="DELETE" />
         <c:param name="id" value="${user.id}" />
     </c:url>
+    <c:url var="JsonLink" value="/users">
+            <c:param name="command" value="LIST-JSON" />
+            <c:param name="id" value="${user.id}" />
+     </c:url>
+
     <p>
         ID #: ${user.id} |
         Username: ${user.username} |
@@ -26,6 +31,7 @@
     <p>
         <a href="${updateLink}">Update User</a> |
         <a href="${deleteLink}" onclick="if (!(confirm('Confirm: Delete ${user.username} from the system?'))) return false">Delete User</a>
+
     </p>
     <hr>
 </c:forEach>

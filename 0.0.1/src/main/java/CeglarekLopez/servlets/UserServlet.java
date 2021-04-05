@@ -30,6 +30,8 @@ public class UserServlet extends HttpServlet {
                 case "LIST":
                     listUsers(request, response);
                     break;
+                case "LIST-JSON":
+                    listUsersJson(request, response);
                 case "ADD":
                     addUser(request, response);
                     break;
@@ -47,12 +49,20 @@ public class UserServlet extends HttpServlet {
     private void listUsers(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<User> users = userService.fetchAllUsers();
-            String usersJson = gson.toJson(users);
             request.setAttribute("USER_LIST", users);
-            request.setAttribute("USERS_JSON", usersJson);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/list-users.jsp");
             dispatcher.forward(request, response);
         } catch (IOException | ServletException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void listUsersJson(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            List<User> users = userService.fetchAllUsers();
+            String usersJson = gson.toJson(users);
+            response.getWriter().print(usersJson);
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
